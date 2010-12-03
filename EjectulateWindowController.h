@@ -19,5 +19,6 @@
 @property (assign) IBOutlet NSTreeController *tree;
 @property (assign) IBOutlet NSOutlineView *outline;
 @property (readonly, retain) NSMutableArray *volumes;
+@property (readonly) NSInteger tabViewIndex;
 
 @end

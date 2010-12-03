@@ -10,6 +10,7 @@
 #import "EJOutlineView.h"
 #import "EJVolume.h"
 #import "ImageAndTextCell.h"
+#import "CollectionUtils.h"
 
 
 @interface EjectulateWindowController ()
@@ -32,6 +33,17 @@
 @synthesize tree;
 @synthesize outline;
 @synthesize volumes;
+@dynamic tabViewIndex;
+
+- (NSInteger)tabViewIndex
+{
+  return [self.volumes count] ? 1 : 0;
+}
+
++ (NSSet *)keyPathsForValuesAffectingTabViewIndex
+{
+  return $set(@"volumes.@count");
+}
 
 #if 0
 #pragma mark -

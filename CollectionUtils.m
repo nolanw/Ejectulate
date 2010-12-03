@@ -9,6 +9,35 @@
 #import "CollectionUtils.h"
 
 
+@implementation NSArray (CollectionUtils)
+
+- (id)firstObject
+{
+  return (([self count] == 0) ? nil : [self objectAtIndex:0]);
+}
+
+@end
+
+
+@implementation NSMutableArray (CollectionUtils)
+
+- (void)shuffle
+{
+  for (NSInteger i = [self count] - 1; i >= 1; i--)
+    [self exchangeObjectAtIndex:i withObjectAtIndex:(arc4random() % (i + 1))];
+}
+
+- (id)popFirstObject
+{
+  id first = [self firstObject];
+  if (first)
+    [self removeObjectAtIndex:0];
+  return first;
+}
+
+@end
+
+
 NSDictionary* _dictof(const struct _dictpair* pairs, 
                       size_t count, 
                       BOOL mutable)
@@ -31,6 +60,19 @@ NSDictionary* _dictof(const struct _dictpair* pairs,
     return [NSDictionary dictionaryWithObjects:objects forKeys:keys count:n];
 }
 
+NSArray *_sortof(NSString **directionedKeys, size_t count)
+{
+  NSMutableArray *descriptors = [NSMutableArray array];
+  for (NSInteger i = 0; i < count; i++)
+  {
+    NSString *key = directionedKeys[i];
+    BOOL ascending = ([key characterAtIndex:0] == '+');
+    NSSortDescriptor *desc = [[[NSSortDescriptor alloc] initWithKey:
+      [key substringFromIndex:1] ascending:ascending] autorelease];
+    [descriptors addObject:desc];
+  }
+  return descriptors;
+}
 
 NSArray* $apply(NSArray *src, SEL selector, id defaultValue)
 {
@@ -65,7 +107,7 @@ BOOL $equal(id obj1, id obj2)
 }
 
 
-NSValue* _box(const void *value, const char *encoding)
+id _box(const void *value, const char *encoding)
 {
   // file:///Developer/Documentation/DocSets/
   // com.apple.ADC_Reference_Library.DeveloperTools.docset/Contents/

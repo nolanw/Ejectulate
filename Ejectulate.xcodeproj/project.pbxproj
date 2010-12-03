@@ -13,7 +13,7 @@
 		1CB4C99712A89CAC0074349E /* EJOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4C99612A89CAC0074349E /* EJOutlineView.m */; };
 		1CB4CB5912A8C66F0074349E /* EjectulateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4CB5812A8C66F0074349E /* EjectulateWindowController.m */; };
 		1CB4CB5C12A8C6BC0074349E /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CB4CB5B12A8C6BC0074349E /* MainWindow.xib */; };
-		1CB4CB6112A8CBB90074349E /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4CB6012A8CBB90074349E /* CollectionUtils.m */; };
+		1CB4CC4712A99D1F0074349E /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB4CC4612A99D1F0074349E /* CollectionUtils.m */; };
 		256AC3DA0F4B6AC300CF3369 /* EjectulateAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 256AC3D90F4B6AC300CF3369 /* EjectulateAppDelegate.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -34,8 +34,8 @@
 		1CB4CB5712A8C66F0074349E /* EjectulateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EjectulateWindowController.h; sourceTree = "<group>"; };
 		1CB4CB5812A8C66F0074349E /* EjectulateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EjectulateWindowController.m; sourceTree = "<group>"; };
 		1CB4CB5B12A8C6BC0074349E /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		1CB4CB5F12A8CBB90074349E /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
-		1CB4CB6012A8CBB90074349E /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
+		1CB4CC4512A99D1F0074349E /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
+		1CB4CC4612A99D1F0074349E /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
 		256AC3D80F4B6AC300CF3369 /* EjectulateAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EjectulateAppDelegate.h; sourceTree = "<group>"; };
 		256AC3D90F4B6AC300CF3369 /* EjectulateAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EjectulateAppDelegate.m; sourceTree = "<group>"; };
 		256AC3F00F4B6AF500CF3369 /* Ejectulate_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ejectulate_Prefix.pch; sourceTree = "<group>"; };
@@ -62,8 +62,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1CB4CB5F12A8CBB90074349E /* CollectionUtils.h */,
-				1CB4CB6012A8CBB90074349E /* CollectionUtils.m */,
+				1CB4CC4512A99D1F0074349E /* CollectionUtils.h */,
+				1CB4CC4612A99D1F0074349E /* CollectionUtils.m */,
 				1CB4C68A12A85A450074349E /* EJVolume.h */,
 				1CB4C68B12A85A450074349E /* EJVolume.m */,
 				256AC3D80F4B6AC300CF3369 /* EjectulateAppDelegate.h */,
@@ -213,7 +213,7 @@
 				1CB4C89C12A8890C0074349E /* ImageAndTextCell.m in Sources */,
 				1CB4C99712A89CAC0074349E /* EJOutlineView.m in Sources */,
 				1CB4CB5912A8C66F0074349E /* EjectulateWindowController.m in Sources */,
-				1CB4CB6112A8CBB90074349E /* CollectionUtils.m in Sources */,
+				1CB4CC4712A99D1F0074349E /* CollectionUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
