@@ -9,6 +9,7 @@
 #import "EJVolume.h"
 #include <sys/mount.h>
 #import <DiskArbitration/DiskArbitration.h>
+#include <errno.h>
 
 
 @interface EJVolume ()
@@ -124,7 +125,7 @@
     session = DASessionCreate(NULL);
     if (!session)
       goto bail;
-    disk = DADiskCreateFromBSDName(NULL, session, [BSDName UTF8String]);
+    disk = DADiskCreateFromBSDName(NULL, session, [aBSDName UTF8String]);
     if (!disk)
       goto bail;
     CFDictionaryRef diskDescription = DADiskCopyDescription(disk);
@@ -193,25 +194,33 @@
 #pragma mark API
 #endif
 
+static void UnmountCallback(DADiskRef disk, DADissenterRef dissenter, void *context)
+{
+  if (dissenter != NULL)
+  {
+    DADiskEject(disk, kDADiskUnmountOptionDefault, NULL, NULL);
+  }
+}
+
 - (void)eject
 {
-  if (self.path)
-    [[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath:self.path];
-  else
+  if (self.children && [self.children count])
   {
-    DASessionRef session = DASessionCreate(NULL);
-    if (!session)
-      return;
-    DADiskRef disk = DADiskCreateFromBSDName(NULL, 
-                                             session, 
-                                             [self.BSDName UTF8String]);
-    if (disk)
-    {
-      DADiskUnmount(disk, 0, NULL, NULL);
-      CFRelease(disk);
-    }
-    CFRelease(session);
+    [self.children makeObjectsPerformSelector:@selector(eject)];
+    return;
   }
+  DASessionRef session = DASessionCreate(NULL);
+  if (!session)
+    return;
+  DADiskRef disk = DADiskCreateFromBSDName(NULL, 
+                                           session, 
+                                           [self.BSDName UTF8String]);
+  if (disk)
+  {
+    DADiskUnmount(disk, kDADiskUnmountOptionDefault, UnmountCallback, NULL);
+    CFRelease(disk);
+  }
+  CFRelease(session);
 }
 
 #if 0
@@ -221,8 +230,8 @@
 
 - (NSString *)description
 {
-  return [NSString stringWithFormat:@"<%@ 0x%x name='%@' BSDName=%@ wholeDiskBSDName=%@>", 
-    NSStringFromClass([self class]), self, self.name, self.BSDName, self.wholeDiskBSDName];
+  return [NSString stringWithFormat:@"<%@ %p name='%@' BSDName=%@", 
+    NSStringFromClass([self class]), self, self.name, self.BSDName];
 }
 
 @end

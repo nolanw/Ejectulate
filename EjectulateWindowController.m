@@ -169,6 +169,11 @@
     if ([wholeDiskCount countForObject:BSDName] > 1)
     {
       EJVolume *wholeDisk = [EJVolume wholeDiskVolumeWithBSDName:BSDName];
+      if (!wholeDisk)
+      {
+        NSLog(@"%@ failed creating whole disk for BSDName %@", NSStringFromSelector(_cmd), BSDName);
+        continue;
+      }
       NSMutableArray *children = [NSMutableArray array];
       for (EJVolume *volume in volumesTemp)
       {
