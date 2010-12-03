@@ -7,8 +7,15 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EjectulateAppDelegate.h"
+
 
 int main(int argc, char *argv[])
 {
-    return NSApplicationMain(argc,  (const char **) argv);
+  NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+  NSApplication *app = [NSApplication sharedApplication];
+  [app setDelegate:[[[EjectulateAppDelegate alloc] init] autorelease]];
+  [app run];
+  [pool release];
+  return 0;
 }

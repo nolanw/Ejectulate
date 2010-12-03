@@ -7,19 +7,13 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "EJOutlineView.h"
+
+@class EjectulateWindowController;
 
 
-@interface EjectulateAppDelegate : NSObject <NSApplicationDelegate, 
-                                             EJOutlineViewDelegate>
+@interface EjectulateAppDelegate : NSObject <NSApplicationDelegate>
 {
-  NSWindow *window;
-  NSMutableArray *volumes;
-  EJOutlineView *outlineView;
+  EjectulateWindowController *windowController;
 }
-
-@property (assign) IBOutlet NSWindow *window;
-@property (retain) NSMutableArray *volumes;
-@property (assign) IBOutlet EJOutlineView *outlineView;
 
 @end
