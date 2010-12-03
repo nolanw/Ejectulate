@@ -15,8 +15,8 @@
 // This magic layout of data1 thanks to Rogue Amoeba.
 // http://www.rogueamoeba.com/utm/archives/MediaKeys.m
 #define EJIsMediaKeyEvent(e) ([e type] == NSSystemDefined && [e subtype] == 8)
-#define EJKeyCodeWithNSEvent(e) (([e data1] & 0xFFFF0000) >> 16)
-#define EJKeyStateWithNSEvent(e) \
+#define EJMediaKeyCodeWithNSEvent(e) (([e data1] & 0xFFFF0000) >> 16)
+#define EJMediaKeyStateWithNSEvent(e) \
         (((([e data1] & 0x0000FFFF) & 0xFF00) >> 8) == 0xA)
 
 
@@ -53,9 +53,9 @@ CGEventRef KeyDownCallback(CGEventTapProxy proxy,
   // NSSystemDefined subtype 8 is a media key.
   if (EJIsMediaKeyEvent(e))
   {
-		if (EJKeyCodeWithNSEvent(e) == kEJEjectKeyCode)
+		if (EJMediaKeyCodeWithNSEvent(e) == kEJEjectKeyCode)
 		{
-		  if (!EJKeyStateWithNSEvent(e))
+		  if (!EJMediaKeyStateWithNSEvent(e))
         [(EjectulateAppDelegate *)refcon ejectWasPressed];
       return NULL;
     }

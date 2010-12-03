@@ -171,7 +171,8 @@
       EJVolume *wholeDisk = [EJVolume wholeDiskVolumeWithBSDName:BSDName];
       if (!wholeDisk)
       {
-        NSLog(@"%@ failed creating whole disk for BSDName %@", NSStringFromSelector(_cmd), BSDName);
+        NSLog(@"%@ failed creating whole disk for BSDName %@", 
+              NSStringFromSelector(_cmd), BSDName);
         continue;
       }
       NSMutableArray *children = [NSMutableArray array];
@@ -218,6 +219,11 @@
                  selector:@selector(applicationWillTerminate:)
                      name:NSApplicationWillTerminateNotification
                    object:nil];
+}
+
+- (void)windowDidLoad
+{
+  [self.outline expandItem:nil expandChildren:YES];
 }
 
 #if 0
