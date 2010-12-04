@@ -259,7 +259,7 @@
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = src/Ejectulate_Prefix.pch;
+				GCC_PREFIX_HEADER = src/Ejectulate_prefix.pch;
 				INFOPLIST_FILE = "Resources/Ejectulate-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Ejectulate;
@@ -273,8 +273,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = Ejectulate_Prefix.pch;
-				INFOPLIST_FILE = "Ejectulate-Info.plist";
+				GCC_PREFIX_HEADER = src/Ejectulate_prefix.pch;
+				INFOPLIST_FILE = "Resources/Ejectulate-Info.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = Ejectulate;
 			};
