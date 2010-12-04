@@ -7,13 +7,15 @@
 //
 
 #import "EJAppDelegate.h"
+#import <IOKit/hidsystem/ev_keymap.h>
 #import "EJWindowController.h"
 #import "NWLoginItems.h"
 
 
-// Observed when pressing eject key. Unsure of portabiility.
-#define kEJEjectKeyCode 14
-// This magic layout of data1 thanks to Rogue Amoeba.
+// Huge thanks to Rogue Amoeba for:
+//   - subtype 8
+//   - The magic layout of data1 for media key events.
+//   - Pointing to the ev_keymap.h header for key constants.
 // http://www.rogueamoeba.com/utm/archives/MediaKeys.m
 #define EJIsMediaKeyEvent(e) ([e type] == NSSystemDefined && [e subtype] == 8)
 #define EJMediaKeyCodeWithNSEvent(e) (([e data1] & 0xFFFF0000) >> 16)
@@ -73,7 +75,7 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
   NSEvent *e = [NSEvent eventWithCGEvent:event];
   if (EJIsMediaKeyEvent(e))
   {
-		if (EJMediaKeyCodeWithNSEvent(e) == kEJEjectKeyCode)
+		if (EJMediaKeyCodeWithNSEvent(e) == NX_KEYTYPE_EJECT)
 		{
       if ([e modifierFlags] & 
           (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | 
