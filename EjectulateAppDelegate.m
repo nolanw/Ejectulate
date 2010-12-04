@@ -24,8 +24,8 @@
 
 @property (nonatomic, retain) EjectulateWindowController *windowController;
 
-- (void)listenForEject;
 - (void)ejectWasPressed;
+- (void)listenForEject;
 
 @end
 
@@ -39,13 +39,28 @@
 #pragma mark API
 #endif
 
+- (void)ejectWasPressed
+{
+  if ([self.windowController.window isKeyWindow])
+    [self.windowController.window performClose:self];
+  else
+  {
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    // Send on next run loop iteration so a crash doesn't happen in the event 
+    // tap callback.
+    [self.windowController performSelector:@selector(showWindow:)
+                                withObject:self
+                                afterDelay:0];
+  }
+}
+
 // Thanks to Kevin Gessner's post on CocoaDev for the code in the following 
 // function and its following method.
 // http://www.cocoabuilder.com/archive/cocoa/222356-play-pause-rew-ff-keys.html
-CGEventRef KeyDownCallback(CGEventTapProxy proxy, 
-                           CGEventType type,
-                           CGEventRef event,
-                           void *refcon)
+static CGEventRef KeyDownCallback(CGEventTapProxy proxy, 
+                                  CGEventType type,
+                                  CGEventRef event,
+                                  void *refcon)
 {
   if (type != NX_SYSDEFINED)
     return event;
@@ -82,17 +97,6 @@ CGEventRef KeyDownCallback(CGEventTapProxy proxy,
                      runLoopSource,
                      kCFRunLoopCommonModes);
   CGEventTapEnable(eventTap, true);
-}
-
-- (void)ejectWasPressed
-{
-  if ([self.windowController.window isKeyWindow])
-    [self.windowController.window performClose:self];
-  else
-  {
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-    [self.windowController showWindow:self];
-  }
 }
 
 #if 0

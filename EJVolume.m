@@ -194,6 +194,18 @@
 #pragma mark API
 #endif
 
+- (void)removeChildVolumeWithPath:(NSString *)childPath
+{
+  for (EJVolume *child in [[self.children copy] autorelease])
+  {
+    if ([child.path isEqual:childPath])
+    {
+      [[self mutableArrayValueForKey:@"children"] removeObject:child];
+      break;
+    }
+  }
+}
+
 static void UnmountCallback(DADiskRef disk, DADissenterRef dissenter, void *context)
 {
   if (dissenter != NULL)

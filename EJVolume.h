@@ -33,13 +33,17 @@
 
 // Get some statfs for the volume at path, then pass along to designated 
 // initializer.
-- (id)initWithPath:(NSString *)path;
+- (id)initWithPath:(NSString *)aPath;
 + (id)volumeWithPath:(NSString *)path;
 
 // Initialize whole disks that don't appear themselves in Finder.
-- (id)initWholeDiskWithBSDName:(NSString *)BSDName;
+- (id)initWholeDiskWithBSDName:(NSString *)aBSDName;
 + (id)wholeDiskVolumeWithBSDName:(NSString *)BSDName;
 
+// Remove first child whose path is childPath, sending KVO notifications.
+- (void)removeChildVolumeWithPath:(NSString *)childPath;
+
+// Eject this volume and all child volumes.
 - (void)eject;
 
 @end

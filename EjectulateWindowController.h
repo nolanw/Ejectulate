@@ -8,17 +8,19 @@
 
 #import <AppKit/AppKit.h>
 
+@class EJEjectableVolumesWatcher;
+
 
 @interface EjectulateWindowController : NSWindowController <NSWindowDelegate>
 {
   NSTreeController *tree;
   NSOutlineView *outline;
-  NSMutableArray *volumes;
+  EJEjectableVolumesWatcher *volumesWatcher;
 }
 
 @property (assign) IBOutlet NSTreeController *tree;
 @property (assign) IBOutlet NSOutlineView *outline;
-@property (readonly, retain) NSMutableArray *volumes;
+@property (assign) IBOutlet EJEjectableVolumesWatcher *volumesWatcher;
 @property (readonly) NSInteger tabViewIndex;
 
 @end
