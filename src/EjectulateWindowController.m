@@ -43,6 +43,10 @@
     {
       [self.outline expandItem:nil expandChildren:YES];
     }];
+  NSArray *buttons = $array(
+    [self.window standardWindowButton:NSWindowMiniaturizeButton],
+    [self.window standardWindowButton:NSWindowZoomButton]);
+  [buttons makeObjectsPerformSelector:@selector(removeFromSuperview)];
   [self.window center];
 }
 
