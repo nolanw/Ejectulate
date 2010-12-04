@@ -19,6 +19,7 @@
 @property (copy) NSString *BSDName;
 @property (copy) NSString *wholeDiskBSDName;
 @property (copy) NSString *path;
+@property (assign, getter=isLocal) BOOL local;
 
 @end
 
@@ -36,6 +37,7 @@
 @synthesize BSDName;
 @synthesize wholeDiskBSDName;
 @synthesize path;
+@synthesize local;
 
 - (void)insertObject:(EJVolume *)volume inChildrenAtIndex:(NSUInteger)index
 {
@@ -63,30 +65,34 @@
       goto bail;
     name = [[[NSFileManager defaultManager] displayNameAtPath:path] copy];
     icon = [[[NSWorkspace sharedWorkspace] iconForFile:path] retain];
-    session = DASessionCreate(NULL);
-    if (!session)
-      goto bail;
-    disk = DADiskCreateFromBSDName(NULL, session, stat->f_mntfromname);
-    if (!disk)
-      goto bail;
-    CFDictionaryRef diskDescription = DADiskCopyDescription(disk);
-    if (!diskDescription)
-      goto bail;
-    CFBooleanRef isWhole;
-    CFDictionaryGetValueIfPresent(diskDescription, 
-                                  kDADiskDescriptionMediaWholeKey,
-                                  (void *)&isWhole);
-    if (isWhole == kCFBooleanFalse)
+    if (stat->f_flags & MNT_LOCAL)
     {
-      DADiskRef wholeDisk = DADiskCopyWholeDisk(disk);
-      wholeDiskBSDName = [[NSString alloc] initWithUTF8String:
+      local = YES;
+      session = DASessionCreate(NULL);
+      if (!session)
+        goto bail;
+      disk = DADiskCreateFromBSDName(NULL, session, stat->f_mntfromname);
+      if (!disk)
+        goto bail;
+      CFDictionaryRef diskDescription = DADiskCopyDescription(disk);
+      if (!diskDescription)
+        goto bail;
+      CFBooleanRef isWhole;
+      CFDictionaryGetValueIfPresent(diskDescription, 
+                                    kDADiskDescriptionMediaWholeKey,
+                                    (void *)&isWhole);
+      if (isWhole == kCFBooleanFalse)
+      {
+        DADiskRef wholeDisk = DADiskCopyWholeDisk(disk);
+        wholeDiskBSDName = [[NSString alloc] initWithUTF8String:
                                                    DADiskGetBSDName(wholeDisk)];
-      CFRelease(wholeDisk);
+        CFRelease(wholeDisk);
+      }
+      BSDName = [[NSString alloc] initWithUTF8String:DADiskGetBSDName(disk)];
+      CFRelease(diskDescription);
+      CFRelease(disk);
+      CFRelease(session);
     }
-    BSDName = [[NSString alloc] initWithUTF8String:DADiskGetBSDName(disk)];
-    CFRelease(diskDescription);
-    CFRelease(disk);
-    CFRelease(session);
   }
   return self;
   
@@ -221,9 +227,28 @@ static void UnmountCallback(DADiskRef disk, DADissenterRef dissenter, void *cont
     [self.children makeObjectsPerformSelector:@selector(eject)];
     return;
   }
-  DASessionRef session = DASessionCreate(NULL);
-  if (!session)
+  if (!self.local)
+  {
+    FSRef ref;
+    if (FSPathMakeRef((const UInt8 *)[self.path fileSystemRepresentation], 
+                      &ref, 
+                      NULL) == noErr)
+    {
+      FSCatalogInfo catalogInfo;
+      if (FSGetCatalogInfo(&ref, 
+                           kFSCatInfoVolume, 
+                           &catalogInfo, 
+                           NULL, 
+                           NULL, 
+                           NULL) == noErr)
+      {
+        pid_t *dissenter;
+        FSUnmountVolumeSync(catalogInfo.volume, 0, dissenter);
+      }
+    }
     return;
+  }
+  DASessionRef session = DASessionCreate(NULL);
   DADiskRef disk = DADiskCreateFromBSDName(NULL, 
                                            session, 
                                            [self.BSDName UTF8String]);

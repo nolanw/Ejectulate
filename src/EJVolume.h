@@ -18,6 +18,7 @@
   NSString *BSDName;
   NSString *wholeDiskBSDName;
   NSString *path;
+  BOOL local;
 }
 
 @property (readonly, copy) NSString *name;
@@ -26,6 +27,7 @@
 @property (readonly, copy) NSString *BSDName;
 @property (readonly, copy) NSString *wholeDiskBSDName;
 @property (readonly, copy) NSString *path;
+@property (readonly, assign, getter=isLocal) BOOL local;
 
 // Designated initializer.
 - (id)initWithStatfs:(struct statfs *)stat;
