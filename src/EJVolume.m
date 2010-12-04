@@ -214,17 +214,18 @@
 
 static void UnmountCallback(DADiskRef disk, DADissenterRef dissenter, void *context)
 {
-  if (dissenter != NULL)
+  if (dissenter == NULL)
   {
     DADiskEject(disk, kDADiskUnmountOptionDefault, NULL, NULL);
   }
 }
 
-- (void)eject
+- (void)eject:(id)sender
 {
   if (self.children && [self.children count])
   {
-    [self.children makeObjectsPerformSelector:@selector(eject)];
+    [self.children makeObjectsPerformSelector:@selector(eject:)
+                                   withObject:self];
     return;
   }
   if (!self.local)
@@ -242,8 +243,8 @@ static void UnmountCallback(DADiskRef disk, DADissenterRef dissenter, void *cont
                            NULL, 
                            NULL) == noErr)
       {
-        pid_t *dissenter;
-        FSUnmountVolumeSync(catalogInfo.volume, 0, dissenter);
+        pid_t dissenter;
+        FSUnmountVolumeSync(catalogInfo.volume, 0, &dissenter);
       }
     }
     return;

@@ -156,7 +156,8 @@
 
 - (void)ej_outlineViewDidPressReturnOrEnter:(EJOutlineView *)anOutlineView
 {
-  [[[self.tree selectedObjects] lastObject] performSelector:@selector(eject)];
+  [[[self.tree selectedObjects] lastObject] performSelector:@selector(eject:)
+                                                 withObject:self];
 }
 
 #if 0
@@ -165,11 +166,19 @@
 #endif
 
 - (void)outlineView:(NSOutlineView*)anOutlineView
-    willDisplayCell:(ImageAndTextCell*)cell
+    willDisplayCell:(NSCell*)cell
      forTableColumn:(NSTableColumn*)tableColumn
                item:(id)item
 {
-  [cell setImage:[[item representedObject] valueForKey:@"icon"]];
+  if ([[tableColumn identifier] isEqual:@"ejectButtons"])
+  {
+    NSButtonCell *button = (NSButtonCell *)cell;
+    [button setTarget:[item representedObject]];
+    [button setAction:@selector(eject:)];
+    [button setShowsBorderOnlyWhileMouseInside:YES];
+  }
+  else
+    [cell setImage:[[item representedObject] valueForKey:@"icon"]];
 }
 
 @end

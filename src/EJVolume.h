@@ -46,6 +46,6 @@
 - (void)removeChildVolumeWithPath:(NSString *)childPath;
 
 // Eject this volume and all child volumes.
-- (void)eject;
+- (void)eject:(id)sender;
 
 @end
