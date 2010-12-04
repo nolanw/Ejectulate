@@ -16,6 +16,8 @@
 @interface EJWindowController ()
 
 - (CGFloat)titleBarHeight;
+- (void)setUpWindow;
+- (void)sizeWindowToFit;
 
 @end
 
@@ -78,19 +80,8 @@
   return frame.size.height - content.size.height;
 }
 
-#if 0
-#pragma mark -
-#pragma mark NSWindowController
-#endif
-
-- (void)windowDidLoad
+- (void)setUpWindow
 {
-  [self.tree addObserverForKeyPath:@"arrangedObjects"
-                           options:NSKeyValueObservingOptionInitial
-                              task:^(id obj, NSDictionary *change)
-    {
-      [self.outline expandItem:nil expandChildren:YES];
-    }];
   NSArray *buttons = $array(
     [self.window standardWindowButton:NSWindowMiniaturizeButton],
     [self.window standardWindowButton:NSWindowZoomButton]);
@@ -110,7 +101,38 @@
     accessoryViewFrame.size.height);
   [titleBar addSubview:self.windowTitleAccessoryView];
   
-  [self.windowTitleAccessoryMenu setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]];
+  NSFont *menuFont = [NSFont systemFontOfSize:[NSFont smallSystemFontSize]];
+  [self.windowTitleAccessoryMenu setFont:menuFont];
+}
+
+- (void)sizeWindowToFit
+{
+  NSUInteger count = MAX([self.outline numberOfRows], 1);
+  CGFloat height = [self.outline rowHeight] * count;
+  height += count * [self.outline intercellSpacing].height;
+  height = MIN(height, self.window.screen.frame.size.height * 0.8);
+  NSRect frame = [self.window frame];
+  NSRect content = [self.window contentRectForFrameRect:frame];
+  content.size.height = height;
+  frame = [self.window frameRectForContentRect:content];
+  [self.window setFrame:frame display:YES animate:YES];
+}
+
+#if 0
+#pragma mark -
+#pragma mark NSWindowController
+#endif
+
+- (void)windowDidLoad
+{
+  [self.tree addObserverForKeyPath:@"arrangedObjects"
+                           options:NSKeyValueObservingOptionInitial
+                              task:^(id obj, NSDictionary *change)
+    {
+      [self.outline expandItem:nil expandChildren:YES];
+      [self sizeWindowToFit];
+    }];
+  [self setUpWindow];
 }
 
 #if 0

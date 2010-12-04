@@ -11,6 +11,11 @@
 
 @implementation EJOutlineView
 
+#if 0
+#pragma mark -
+#pragma mark NSResponder
+#endif
+
 - (void)keyDown:(NSEvent *)event
 {
   NSString *characters = [event charactersIgnoringModifiers];
