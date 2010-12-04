@@ -54,6 +54,7 @@
 - (void)closeWindow
 {
   [self.window performClose:self];
+  [[NSApplication sharedApplication] hide:self];
 }
 
 - (IBAction)showActionMenu:(id)sender
@@ -123,8 +124,10 @@
   height = MIN(height, self.window.screen.frame.size.height * 0.8);
   NSRect frame = [self.window frame];
   NSRect content = [self.window contentRectForFrameRect:frame];
+  CGFloat oldHeight = content.size.height;
   content.size.height = height;
   frame = [self.window frameRectForContentRect:content];
+  frame.origin.y += (oldHeight - height);
   [self.window setFrame:frame display:YES animate:YES];
 }
 
@@ -140,6 +143,7 @@
                               task:^(id obj, NSDictionary *change)
     {
       [self.outline expandItem:nil expandChildren:YES];
+      [self.window center];
       [self sizeWindowToFit];
     }];
   [self setUpWindow];
