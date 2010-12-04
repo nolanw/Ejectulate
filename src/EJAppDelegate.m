@@ -17,6 +17,7 @@
 // http://www.rogueamoeba.com/utm/archives/MediaKeys.m
 #define EJIsMediaKeyEvent(e) ([e type] == NSSystemDefined && [e subtype] == 8)
 #define EJMediaKeyCodeWithNSEvent(e) (([e data1] & 0xFFFF0000) >> 16)
+#define EJMediaKeyFlagsWithNSEvent(e) ([e data1] & 0x0000FFFF)
 #define EJMediaKeyStateWithNSEvent(e) \
         (((([e data1] & 0x0000FFFF) & 0xFF00) >> 8) == 0xA)
 
@@ -70,11 +71,15 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
   if (type != NX_SYSDEFINED)
     return event;
   NSEvent *e = [NSEvent eventWithCGEvent:event];
-  // NSSystemDefined subtype 8 is a media key.
   if (EJIsMediaKeyEvent(e))
   {
 		if (EJMediaKeyCodeWithNSEvent(e) == kEJEjectKeyCode)
 		{
+      if (([e modifierFlags] & NSShiftKeyMask) || 
+          ([e modifierFlags] & NSControlKeyMask) || 
+          ([e modifierFlags] & NSAlternateKeyMask) || 
+          ([e modifierFlags] & NSCommandKeyMask))
+        return event;
 		  if (!EJMediaKeyStateWithNSEvent(e))
         [(EJAppDelegate *)refcon ejectWasPressed];
       return NULL;
