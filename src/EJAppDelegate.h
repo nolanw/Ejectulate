@@ -14,6 +14,7 @@
 @interface EJAppDelegate : NSObject <NSApplicationDelegate>
 {
   EJWindowController *windowController;
+  CFMachPortRef eventTap;
 }
 
 @end

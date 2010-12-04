@@ -59,6 +59,14 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
                                   CGEventRef event,
                                   void *refcon)
 {
+  // For whatever reason the system seems to disable the event tap after a few 
+  // minutes without being used (or maybe after being enabled, not sure). If 
+  // that happens, just reenable it and all's well.
+  if (type == kCGEventTapDisabledByTimeout)
+  {
+    [(EJAppDelegate *)refcon listenForEject];
+    return NULL;
+  }
   if (type != NX_SYSDEFINED)
     return event;
   NSEvent *e = [NSEvent eventWithCGEvent:event];
@@ -77,22 +85,25 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
 
 - (void)listenForEject
 {
-  CFMachPortRef eventTap = CGEventTapCreate(kCGSessionEventTap, 
-                                            kCGHeadInsertEventTap,
-                                            0,
-                                            CGEventMaskBit(NX_SYSDEFINED),
-                                            KeyDownCallback,
-                                            self);
   if (!eventTap)
   {
-    NSLog(@"%@ no tap; universal access?", NSStringFromSelector(_cmd));
-    return;
-  }
-  CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(
+    eventTap = CGEventTapCreate(kCGSessionEventTap, 
+                                kCGHeadInsertEventTap,
+                                0,
+                                CGEventMaskBit(NX_SYSDEFINED),
+                                KeyDownCallback,
+                                self);
+    if (!eventTap)
+    {
+      NSLog(@"%@ no tap; universal access?", NSStringFromSelector(_cmd));
+      return;
+    }
+    CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(
                                               kCFAllocatorDefault, eventTap, 0);
-  CFRunLoopAddSource(CFRunLoopGetCurrent(),
-                     runLoopSource,
-                     kCFRunLoopCommonModes);
+    CFRunLoopAddSource(CFRunLoopGetCurrent(),
+                       runLoopSource,
+                       kCFRunLoopCommonModes);
+  }
   CGEventTapEnable(eventTap, true);
 }
 
