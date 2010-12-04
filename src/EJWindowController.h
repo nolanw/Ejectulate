@@ -28,6 +28,9 @@
 @property (assign) IBOutlet NSMenu *windowTitleAccessoryMenu;
 @property (readonly) NSInteger tabViewIndex;
 
+- (void)showWindow;
+- (void)closeWindow;
+
 - (IBAction)showActionMenu:(id)sender;
 
 @end

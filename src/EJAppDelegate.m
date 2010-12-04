@@ -43,15 +43,11 @@
 - (void)ejectWasPressed
 {
   if ([self.windowController.window isKeyWindow])
-    [self.windowController.window performClose:self];
+    [self.windowController closeWindow];
   else
   {
     [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-    // Send on next run loop iteration so a crash doesn't happen in the event 
-    // tap callback.
-    [self.windowController performSelector:@selector(showWindow:)
-                                withObject:self
-                                afterDelay:0];
+    [self.windowController showWindow];
   }
 }
 

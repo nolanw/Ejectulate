@@ -46,6 +46,16 @@
 #pragma mark API
 #endif
 
+- (void)showWindow
+{
+  [self.window makeKeyAndOrderFront:self];
+}
+
+- (void)closeWindow
+{
+  [self.window performClose:self];
+}
+
 - (IBAction)showActionMenu:(id)sender
 {
   // Thanks to Praveen Matanam (well probably not but he has no source)
