@@ -13,12 +13,13 @@
 		1CDA338F12A9C54F00412DB4 /* NSObject+BlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA337A12A9C54F00412DB4 /* NSObject+BlockObservation.m */; };
 		1CDA339112A9C54F00412DB4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1CDA337D12A9C54F00412DB4 /* InfoPlist.strings */; };
 		1CDA339212A9C54F00412DB4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CDA337F12A9C54F00412DB4 /* MainWindow.xib */; };
-		1CDA339312A9C54F00412DB4 /* EjectulateAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338312A9C54F00412DB4 /* EjectulateAppDelegate.m */; };
-		1CDA339412A9C54F00412DB4 /* EjectulateWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338512A9C54F00412DB4 /* EjectulateWindowController.m */; };
+		1CDA339312A9C54F00412DB4 /* EJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338312A9C54F00412DB4 /* EJAppDelegate.m */; };
+		1CDA339412A9C54F00412DB4 /* EJWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338512A9C54F00412DB4 /* EJWindowController.m */; };
 		1CDA339512A9C54F00412DB4 /* EJEjectableVolumesWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338712A9C54F00412DB4 /* EJEjectableVolumesWatcher.m */; };
 		1CDA339612A9C54F00412DB4 /* EJOutlineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338912A9C54F00412DB4 /* EJOutlineView.m */; };
 		1CDA339712A9C54F00412DB4 /* EJVolume.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338B12A9C54F00412DB4 /* EJVolume.m */; };
 		1CDA339812A9C54F00412DB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338C12A9C54F00412DB4 /* main.m */; };
+		1CE00D3512A9E6F10086846F /* NWLoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE00D3412A9E6F10086846F /* NWLoginItems.m */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,10 +37,10 @@
 		1CDA337E12A9C54F00412DB4 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1CDA337F12A9C54F00412DB4 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		1CDA338112A9C54F00412DB4 /* Ejectulate_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ejectulate_Prefix.pch; sourceTree = "<group>"; };
-		1CDA338212A9C54F00412DB4 /* EjectulateAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EjectulateAppDelegate.h; sourceTree = "<group>"; };
-		1CDA338312A9C54F00412DB4 /* EjectulateAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EjectulateAppDelegate.m; sourceTree = "<group>"; };
-		1CDA338412A9C54F00412DB4 /* EjectulateWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EjectulateWindowController.h; sourceTree = "<group>"; };
-		1CDA338512A9C54F00412DB4 /* EjectulateWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EjectulateWindowController.m; sourceTree = "<group>"; };
+		1CDA338212A9C54F00412DB4 /* EJAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJAppDelegate.h; sourceTree = "<group>"; };
+		1CDA338312A9C54F00412DB4 /* EJAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJAppDelegate.m; sourceTree = "<group>"; };
+		1CDA338412A9C54F00412DB4 /* EJWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJWindowController.h; sourceTree = "<group>"; };
+		1CDA338512A9C54F00412DB4 /* EJWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJWindowController.m; sourceTree = "<group>"; };
 		1CDA338612A9C54F00412DB4 /* EJEjectableVolumesWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJEjectableVolumesWatcher.h; sourceTree = "<group>"; };
 		1CDA338712A9C54F00412DB4 /* EJEjectableVolumesWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJEjectableVolumesWatcher.m; sourceTree = "<group>"; };
 		1CDA338812A9C54F00412DB4 /* EJOutlineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJOutlineView.h; sourceTree = "<group>"; };
@@ -47,6 +48,8 @@
 		1CDA338A12A9C54F00412DB4 /* EJVolume.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJVolume.h; sourceTree = "<group>"; };
 		1CDA338B12A9C54F00412DB4 /* EJVolume.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJVolume.m; sourceTree = "<group>"; };
 		1CDA338C12A9C54F00412DB4 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1CE00D3312A9E6F10086846F /* NWLoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLoginItems.h; sourceTree = "<group>"; };
+		1CE00D3412A9E6F10086846F /* NWLoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWLoginItems.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107320486CEB800E47090 /* Ejectulate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ejectulate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +104,8 @@
 				1CDA337812A9C54F00412DB4 /* ImageAndTextCell.m */,
 				1CDA337912A9C54F00412DB4 /* NSObject+BlockObservation.h */,
 				1CDA337A12A9C54F00412DB4 /* NSObject+BlockObservation.m */,
+				1CE00D3312A9E6F10086846F /* NWLoginItems.h */,
+				1CE00D3412A9E6F10086846F /* NWLoginItems.m */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -119,16 +124,16 @@
 			isa = PBXGroup;
 			children = (
 				1CDA338112A9C54F00412DB4 /* Ejectulate_Prefix.pch */,
-				1CDA338212A9C54F00412DB4 /* EjectulateAppDelegate.h */,
-				1CDA338312A9C54F00412DB4 /* EjectulateAppDelegate.m */,
-				1CDA338412A9C54F00412DB4 /* EjectulateWindowController.h */,
-				1CDA338512A9C54F00412DB4 /* EjectulateWindowController.m */,
+				1CDA338212A9C54F00412DB4 /* EJAppDelegate.h */,
+				1CDA338312A9C54F00412DB4 /* EJAppDelegate.m */,
 				1CDA338612A9C54F00412DB4 /* EJEjectableVolumesWatcher.h */,
 				1CDA338712A9C54F00412DB4 /* EJEjectableVolumesWatcher.m */,
 				1CDA338812A9C54F00412DB4 /* EJOutlineView.h */,
 				1CDA338912A9C54F00412DB4 /* EJOutlineView.m */,
 				1CDA338A12A9C54F00412DB4 /* EJVolume.h */,
 				1CDA338B12A9C54F00412DB4 /* EJVolume.m */,
+				1CDA338412A9C54F00412DB4 /* EJWindowController.h */,
+				1CDA338512A9C54F00412DB4 /* EJWindowController.m */,
 				1CDA338C12A9C54F00412DB4 /* main.m */,
 			);
 			path = src;
@@ -137,9 +142,9 @@
 		29B97314FDCFA39411CA2CEA /* Ejectulate */ = {
 			isa = PBXGroup;
 			children = (
+				1CDA338012A9C54F00412DB4 /* src */,
 				1CDA337412A9C54F00412DB4 /* lib */,
 				1CDA337B12A9C54F00412DB4 /* Resources */,
-				1CDA338012A9C54F00412DB4 /* src */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
@@ -220,12 +225,13 @@
 				1CDA338D12A9C54F00412DB4 /* CollectionUtils.m in Sources */,
 				1CDA338E12A9C54F00412DB4 /* ImageAndTextCell.m in Sources */,
 				1CDA338F12A9C54F00412DB4 /* NSObject+BlockObservation.m in Sources */,
-				1CDA339312A9C54F00412DB4 /* EjectulateAppDelegate.m in Sources */,
-				1CDA339412A9C54F00412DB4 /* EjectulateWindowController.m in Sources */,
+				1CDA339312A9C54F00412DB4 /* EJAppDelegate.m in Sources */,
+				1CDA339412A9C54F00412DB4 /* EJWindowController.m in Sources */,
 				1CDA339512A9C54F00412DB4 /* EJEjectableVolumesWatcher.m in Sources */,
 				1CDA339612A9C54F00412DB4 /* EJOutlineView.m in Sources */,
 				1CDA339712A9C54F00412DB4 /* EJVolume.m in Sources */,
 				1CDA339812A9C54F00412DB4 /* main.m in Sources */,
+				1CE00D3512A9E6F10086846F /* NWLoginItems.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

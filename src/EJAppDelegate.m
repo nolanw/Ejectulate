@@ -1,13 +1,14 @@
 //
-//  EjectulateAppDelegate.m
+//  EJAppDelegate.m
 //  Ejectulate
 //
 //  Created by Nolan Waite on 10-12-02.
 //  Copyright 2010 Nolan Waite. All rights reserved.
 //
 
-#import "EjectulateAppDelegate.h"
-#import "EjectulateWindowController.h"
+#import "EJAppDelegate.h"
+#import "EJWindowController.h"
+#import "NWLoginItems.h"
 
 
 // Observed when pressing eject key. Unsure of portabiility.
@@ -20,9 +21,9 @@
         (((([e data1] & 0x0000FFFF) & 0xFF00) >> 8) == 0xA)
 
 
-@interface EjectulateAppDelegate ()
+@interface EJAppDelegate ()
 
-@property (nonatomic, retain) EjectulateWindowController *windowController;
+@property (nonatomic, retain) EJWindowController *windowController;
 
 - (void)ejectWasPressed;
 - (void)listenForEject;
@@ -30,7 +31,7 @@
 @end
 
 
-@implementation EjectulateAppDelegate
+@implementation EJAppDelegate
 
 @synthesize windowController;
 
@@ -71,7 +72,7 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
 		if (EJMediaKeyCodeWithNSEvent(e) == kEJEjectKeyCode)
 		{
 		  if (!EJMediaKeyStateWithNSEvent(e))
-        [(EjectulateAppDelegate *)refcon ejectWasPressed];
+        [(EJAppDelegate *)refcon ejectWasPressed];
       return NULL;
     }
   }
@@ -101,15 +102,41 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
 
 #if 0
 #pragma mark -
+#pragma mark NSObject?
+#endif
+
++ (void)initialize
+{
+  [[NSUserDefaults standardUserDefaults] registerDefaults:$dict(
+    @"StartOnLogin", @"NO")];
+}
+
+#if 0
+#pragma mark -
 #pragma mark NSApplicationDelegate
 #endif
 
 - (void)applicationDidFinishLaunching:(NSNotification *)note
 {
-  Class ejwc = [EjectulateWindowController class];
-  self.windowController = [[ejwc alloc] initWithWindowNibName:@"MainWindow"];
-  [self.windowController autorelease];
+  self.windowController = [[[EJWindowController alloc] initWithWindowNibName:
+                                                    @"MainWindow"] autorelease];
   [self listenForEject];
+  
+  // Handle the user toggling option to start Ejectulate on login.
+  NSUserDefaultsController *defaults;
+  defaults = [NSUserDefaultsController sharedUserDefaultsController];
+  [defaults addObserverForKeyPath:@"values.StartsOnLogin"
+                          options:0
+                             task:^(id obj, NSDictionary *change)
+    {
+      // For some reason the change dictionary refuses to set a useful value 
+      // for new, so here we just get it ourselves.
+      NSNumber *startOnLogin = [obj valueForKeyPath:@"values.StartsOnLogin"];
+      if ([startOnLogin boolValue])
+        [NWLoginItems addBundleToSessionLoginItems:nil];
+      else
+        [NWLoginItems removeBundleFromSessionLoginItems:nil];
+    }];
 }
 
 @end
