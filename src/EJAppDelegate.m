@@ -75,10 +75,9 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
   {
 		if (EJMediaKeyCodeWithNSEvent(e) == kEJEjectKeyCode)
 		{
-      if (([e modifierFlags] & NSShiftKeyMask) || 
-          ([e modifierFlags] & NSControlKeyMask) || 
-          ([e modifierFlags] & NSAlternateKeyMask) || 
-          ([e modifierFlags] & NSCommandKeyMask))
+      if ([e modifierFlags] & 
+          (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | 
+           NSCommandKeyMask))
         return event;
 		  if (!EJMediaKeyStateWithNSEvent(e))
         [(EJAppDelegate *)refcon ejectWasPressed];
