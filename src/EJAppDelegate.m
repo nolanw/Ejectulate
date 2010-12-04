@@ -102,7 +102,7 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
 
 #if 0
 #pragma mark -
-#pragma mark NSObject?
+#pragma mark NSObject
 #endif
 
 + (void)initialize
