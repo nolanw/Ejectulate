@@ -16,6 +16,6 @@ int main(int argc, char *argv[])
   NSApplication *app = [NSApplication sharedApplication];
   [app setDelegate:[[[EJAppDelegate alloc] init] autorelease]];
   [app run];
-  [pool release];
+  [pool drain];
   return 0;
 }

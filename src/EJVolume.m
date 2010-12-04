@@ -163,6 +163,7 @@
         }
       }
     }
+    CFRelease(diskDescription);
     CFRelease(disk);
     CFRelease(session);
     BSDName = [aBSDName copy];

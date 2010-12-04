@@ -103,6 +103,7 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
     CFRunLoopAddSource(CFRunLoopGetCurrent(),
                        runLoopSource,
                        kCFRunLoopCommonModes);
+    CFRelease(runLoopSource);
   }
   CGEventTapEnable(eventTap, true);
 }
