@@ -43,6 +43,7 @@
     {
       [self.outline expandItem:nil expandChildren:YES];
     }];
+  [self.window center];
 }
 
 #if 0
