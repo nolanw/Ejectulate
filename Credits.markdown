@@ -11,3 +11,6 @@ ImageAndTextCell comes from the Apple sample code project called DragNDropOutlin
 
 NSObject+BlockObservation.h is by Andy Matuschak.
 andymatuschak.org
+
+Rogue Amoeba figured out the media key voodoo.
+http://www.rogueamoeba.com/utm/archives/MediaKeys.m
