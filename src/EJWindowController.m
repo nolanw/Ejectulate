@@ -22,9 +22,13 @@
 // buttons.
 - (void)setUpWindow;
 
-// Resize the window to hold as many volumes as possible, up to a maximum of 
-// 80% of the screen.
+// Identical to sending -sizeWindowToFit: with an argument of 0. See discussion 
+// below.
 - (void)sizeWindowToFit;
+
+// Resize the window to hold as many rows as possible of the outline view, plus 
+// additional, but no more than 80% of the screen.
+- (void)sizeWindowToFit:(NSUInteger)additional;
 
 @end
 
@@ -132,7 +136,12 @@
 
 - (void)sizeWindowToFit
 {
-  NSUInteger count = MAX([self.outline numberOfRows], 1);
+  [self sizeWindowToFit:0];
+}
+
+- (void)sizeWindowToFit:(NSUInteger)additional
+{
+  NSUInteger count = MAX([self.outline numberOfRows], 1) + additional;
   CGFloat height = [self.outline rowHeight] * count;
   height += count * [self.outline intercellSpacing].height;
   height = MIN(height, self.window.screen.frame.size.height * 0.8);
@@ -193,6 +202,17 @@
   }
   else
     [cell setImage:[[item representedObject] valueForKey:@"icon"]];
+}
+
+- (void)outlineViewItemWillExpand:(NSNotification *)note
+{
+  NSTreeNode *item = [[note userInfo] objectForKey:@"NSObject"];
+  [self sizeWindowToFit:[item.childNodes count]];
+}
+
+- (void)outlineViewItemDidCollapse:(NSNotification *)note
+{
+  [self sizeWindowToFit];
 }
 
 @end
