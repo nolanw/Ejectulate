@@ -245,6 +245,15 @@ static void EjectImmediatelyOnUnmountCallback(DADiskRef disk,
   CFRelease(session);
 }
 
+static void DisposeCallback(FSVolumeOperation volumeOp,
+                            void *clientData,
+                            OSStatus err,
+                            FSVolumeRefNum mountedVolumeRefNum,
+                            pid_t dissenter)
+{
+  FSDisposeVolumeOperation(volumeOp);
+}
+
 - (void)ejectNetwork
 {
   if (self.local)
@@ -253,17 +262,21 @@ static void EjectImmediatelyOnUnmountCallback(DADiskRef disk,
   OSErr err;
   err = FSPathMakeRef((const UInt8 *)[self.path fileSystemRepresentation], 
                                                                     &ref, NULL);
-  if (err == noErr)
-  {
-    FSCatalogInfo catalogInfo;
-    err = FSGetCatalogInfo(&ref, kFSCatInfoVolume, &catalogInfo, NULL, NULL, 
-                                                                          NULL);
-    if (err == noErr)
-    {
-      pid_t dissenter;
-      FSUnmountVolumeSync(catalogInfo.volume, 0, &dissenter);
-    }
-  }
+  if (err != noErr)
+    return;
+  FSCatalogInfo catalogInfo;
+  err = FSGetCatalogInfo(&ref, kFSCatInfoVolume, &catalogInfo, NULL, NULL, 
+                                                                        NULL);
+  if (err != noErr)
+    return;
+  FSVolumeOperation volumeOp;
+  err = FSCreateVolumeOperation(&volumeOp);
+  if (err != noErr)
+    return;
+  err = FSUnmountVolumeAsync(catalogInfo.volume, 0, volumeOp, NULL, 
+                 DisposeCallback, CFRunLoopGetCurrent(), kCFRunLoopDefaultMode);
+  if (err != noErr)
+    FSDisposeVolumeOperation(volumeOp);
 }
 
 #if 0
