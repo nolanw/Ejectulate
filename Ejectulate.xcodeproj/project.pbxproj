@@ -21,6 +21,7 @@
 		1CDA339812A9C54F00412DB4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338C12A9C54F00412DB4 /* main.m */; };
 		1CE00D3512A9E6F10086846F /* NWLoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE00D3412A9E6F10086846F /* NWLoginItems.m */; };
 		1CE00E0412AA19350086846F /* Ejectulate.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1CE00E0312AA19350086846F /* Ejectulate.icns */; };
+		1CE00F6212AB027D0086846F /* EJEjectKeyWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE00F6112AB027D0086846F /* EJEjectKeyWatcher.m */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,8 @@
 		1CE00D3312A9E6F10086846F /* NWLoginItems.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLoginItems.h; sourceTree = "<group>"; };
 		1CE00D3412A9E6F10086846F /* NWLoginItems.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWLoginItems.m; sourceTree = "<group>"; };
 		1CE00E0312AA19350086846F /* Ejectulate.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Ejectulate.icns; sourceTree = "<group>"; };
+		1CE00F6012AB027D0086846F /* EJEjectKeyWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJEjectKeyWatcher.h; sourceTree = "<group>"; };
+		1CE00F6112AB027D0086846F /* EJEjectKeyWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJEjectKeyWatcher.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107320486CEB800E47090 /* Ejectulate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ejectulate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +134,8 @@
 				1CDA338312A9C54F00412DB4 /* EJAppDelegate.m */,
 				1CDA338612A9C54F00412DB4 /* EJEjectableVolumesWatcher.h */,
 				1CDA338712A9C54F00412DB4 /* EJEjectableVolumesWatcher.m */,
+				1CE00F6012AB027D0086846F /* EJEjectKeyWatcher.h */,
+				1CE00F6112AB027D0086846F /* EJEjectKeyWatcher.m */,
 				1CDA338812A9C54F00412DB4 /* EJOutlineView.h */,
 				1CDA338912A9C54F00412DB4 /* EJOutlineView.m */,
 				1CDA338A12A9C54F00412DB4 /* EJVolume.h */,
@@ -236,6 +241,7 @@
 				1CDA339712A9C54F00412DB4 /* EJVolume.m in Sources */,
 				1CDA339812A9C54F00412DB4 /* main.m in Sources */,
 				1CE00D3512A9E6F10086846F /* NWLoginItems.m in Sources */,
+				1CE00F6212AB027D0086846F /* EJEjectKeyWatcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

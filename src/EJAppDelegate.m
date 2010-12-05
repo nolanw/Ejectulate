@@ -7,112 +7,22 @@
 //
 
 #import "EJAppDelegate.h"
-#import <IOKit/hidsystem/ev_keymap.h>
 #import "EJWindowController.h"
 #import "NWLoginItems.h"
 
 
-// Huge thanks to Rogue Amoeba for:
-//   - subtype 8
-//   - The magic layout of data1 for media key events.
-//   - Pointing to the ev_keymap.h header for key constants.
-// http://www.rogueamoeba.com/utm/archives/MediaKeys.m
-#define EJIsMediaKeyEvent(e) ([e type] == NSSystemDefined && [e subtype] == 8)
-#define EJMediaKeyCodeWithNSEvent(e) (([e data1] & 0xFFFF0000) >> 16)
-#define EJMediaKeyFlagsWithNSEvent(e) ([e data1] & 0x0000FFFF)
-#define EJMediaKeyStateWithNSEvent(e) \
-        (((([e data1] & 0x0000FFFF) & 0xFF00) >> 8) == 0xA)
-
-
 @interface EJAppDelegate ()
 
+@property (nonatomic, retain) EJEjectKeyWatcher *ejectKeyWatcher;
 @property (nonatomic, retain) EJWindowController *windowController;
-
-- (void)ejectWasPressed;
-- (void)listenForEject;
 
 @end
 
 
 @implementation EJAppDelegate
 
+@synthesize ejectKeyWatcher;
 @synthesize windowController;
-
-#if 0
-#pragma mark -
-#pragma mark API
-#endif
-
-- (void)ejectWasPressed
-{
-  if ([self.windowController.window isKeyWindow])
-    [self.windowController closeWindow];
-  else
-  {
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-    [self.windowController showWindow];
-  }
-}
-
-// Thanks to Kevin Gessner's post on CocoaDev for the code in the following 
-// function and its following method.
-// http://www.cocoabuilder.com/archive/cocoa/222356-play-pause-rew-ff-keys.html
-static CGEventRef KeyDownCallback(CGEventTapProxy proxy, 
-                                  CGEventType type,
-                                  CGEventRef event,
-                                  void *refcon)
-{
-  // For whatever reason the system seems to disable the event tap after a few 
-  // minutes without being used (or maybe after being enabled, not sure). If 
-  // that happens, just reenable it and all's well.
-  if (type == kCGEventTapDisabledByTimeout)
-  {
-    [(EJAppDelegate *)refcon listenForEject];
-    return NULL;
-  }
-  if (type != NX_SYSDEFINED)
-    return event;
-  NSEvent *e = [NSEvent eventWithCGEvent:event];
-  if (EJIsMediaKeyEvent(e))
-  {
-		if (EJMediaKeyCodeWithNSEvent(e) == NX_KEYTYPE_EJECT)
-		{
-      if ([e modifierFlags] & 
-          (NSShiftKeyMask | NSControlKeyMask | NSAlternateKeyMask | 
-           NSCommandKeyMask))
-        return event;
-		  if (!EJMediaKeyStateWithNSEvent(e))
-        [(EJAppDelegate *)refcon ejectWasPressed];
-      return NULL;
-    }
-  }
-  return event;
-}
-
-- (void)listenForEject
-{
-  if (!eventTap)
-  {
-    eventTap = CGEventTapCreate(kCGSessionEventTap, 
-                                kCGHeadInsertEventTap,
-                                0,
-                                CGEventMaskBit(NX_SYSDEFINED),
-                                KeyDownCallback,
-                                self);
-    if (!eventTap)
-    {
-      NSLog(@"%@ no tap; universal access?", NSStringFromSelector(_cmd));
-      return;
-    }
-    CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(
-                                              kCFAllocatorDefault, eventTap, 0);
-    CFRunLoopAddSource(CFRunLoopGetCurrent(),
-                       runLoopSource,
-                       kCFRunLoopCommonModes);
-    CFRelease(runLoopSource);
-  }
-  CGEventTapEnable(eventTap, true);
-}
 
 #if 0
 #pragma mark -
@@ -134,7 +44,6 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
 {
   self.windowController = [[[EJWindowController alloc] initWithWindowNibName:
                                                     @"MainWindow"] autorelease];
-  [self listenForEject];
   
   // Handle the user toggling option to start Ejectulate on login.
   NSUserDefaultsController *defaults;
@@ -151,6 +60,24 @@ static CGEventRef KeyDownCallback(CGEventTapProxy proxy,
       else
         [NWLoginItems removeBundleFromSessionLoginItems:nil];
     }];
+  self.ejectKeyWatcher = [EJEjectKeyWatcher watcher];
+  self.ejectKeyWatcher.delegate = self;
+}
+
+#if 0
+#pragma mark -
+#pragma mark EJEjectKeyWatcherDelegate
+#endif
+
+- (void)ejectWasPressed
+{
+  if ([self.windowController.window isKeyWindow])
+    [self.windowController closeWindow];
+  else
+  {
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+    [self.windowController showWindow];
+  }
 }
 
 @end

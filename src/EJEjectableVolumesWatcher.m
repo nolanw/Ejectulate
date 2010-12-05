@@ -12,12 +12,23 @@
 
 @interface EJEjectableVolumesWatcher ()
 
+// Build and return a list of volumes that can be ejected.
 - (NSMutableArray *)ejectableVolumes;
+
+// Add newVolume to the list of volumes, creating a parent volume if needed.
 - (void)addVolume:(EJVolume *)newVolume;
+
+// Remove the first volume with the given path from the list of volumes, 
+// promoting a child volume if it has no siblings.
 - (void)removeVolumeWithPath:(NSString *)path;
 
+// Have NSWorkspace tell us about mounts and unmounts.
 - (void)setupNotifications;
+
+// NSWorkspace figures a disk just mounted.
 - (void)diskDidMount:(NSNotification *)note;
+
+// NSWorkspace figures a disk just unmounted.
 - (void)diskDidUnmount:(NSNotification *)note;
 
 @end
@@ -25,11 +36,16 @@
 
 @implementation EJEjectableVolumesWatcher
 
+#if 0
+#pragma mark -
+#pragma mark Properties
+#endif
+
 @synthesize volumes;
 
 #if 0
 #pragma mark -
-#pragma mark Init/dealloc
+#pragma mark Init
 #endif
 
 - (id)init

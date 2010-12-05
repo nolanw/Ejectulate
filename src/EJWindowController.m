@@ -15,14 +15,26 @@
 
 @interface EJWindowController ()
 
+// Calculate the height of the title bar of the window.
 - (CGFloat)titleBarHeight;
+
+// Put the action menu in the window frame and remove the zoom + miniturize 
+// buttons.
 - (void)setUpWindow;
+
+// Resize the window to hold as many volumes as possible, up to a maximum of 
+// 80% of the screen.
 - (void)sizeWindowToFit;
 
 @end
 
 
 @implementation EJWindowController
+
+#if 0
+#pragma mark -
+#pragma mark Properties
+#endif
 
 @synthesize tree;
 @synthesize outline;
@@ -70,6 +82,7 @@
                                          frame.origin.y + frame.size.height);
   NSPoint origin = [[button superview] convertPoint:originFromButton
                                              toView:nil];
+  // Winner, selector with most arguments.
   NSEvent *event = [NSEvent mouseEventWithType:NSLeftMouseDown
                                       location:origin
                                  modifierFlags:NSLeftMouseDownMask
@@ -79,6 +92,7 @@
                                    eventNumber:0
                                     clickCount:1
                                       pressure:1];
+  // NSMenu will help us if the menu would appear off the screen.
   [NSMenu popUpContextMenu:self.windowTitleAccessoryMenu
                  withEvent:event
                    forView:button];

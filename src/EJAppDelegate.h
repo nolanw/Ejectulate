@@ -7,14 +7,17 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "EJEjectKeyWatcher.h"
+
 
 @class EJWindowController;
 
 
-@interface EJAppDelegate : NSObject <NSApplicationDelegate>
+@interface EJAppDelegate : NSObject <NSApplicationDelegate, 
+                                     EJEjectKeyWatcherDelegate>
 {
   EJWindowController *windowController;
-  CFMachPortRef eventTap;
+  EJEjectKeyWatcher *ejectKeyWatcher;
 }
 
 @end

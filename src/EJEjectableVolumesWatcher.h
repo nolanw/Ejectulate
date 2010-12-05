@@ -9,13 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 
-// Creates and maintains a list of ejectable volumes.
+// Creates and maintains a list of ejectable volumes (instances of EJVolume)
+// Key-Value Observing compliant.
 @interface EJEjectableVolumesWatcher : NSObject
 {
   NSMutableArray *volumes;
 }
 
-// The volumes property is fully KVO-compliant.
-@property (readonly, retain) NSMutableArray *volumes;
+// An up-to-date list of ejectable volumes. KVO-compliant.
+@property (readonly, retain, nonatomic) NSMutableArray *volumes;
 
 @end

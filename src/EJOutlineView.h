@@ -8,15 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-// Conforming delegates can be told when the Return or Enter key is pressed.
-@protocol EJOutlineViewDelegate <NSOutlineViewDelegate>
-@optional
-- (void)ej_outlineViewDidPressReturnOrEnter:(NSOutlineView *)outlineView;
-@end
 
 // Outline view that sends to its delegate when the Return or Enter key is 
 // pressed.
-@interface EJOutlineView : NSOutlineView
-{}
+@interface EJOutlineView : NSOutlineView {}
+
+@end
+
+
+// Conforming delegates can be told when the Return or Enter key is pressed.
+@protocol EJOutlineViewDelegate <NSOutlineViewDelegate>
+
+@optional
+- (void)ej_outlineViewDidPressReturnOrEnter:(NSOutlineView *)outlineView;
 
 @end

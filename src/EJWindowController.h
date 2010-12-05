@@ -8,10 +8,12 @@
 
 #import <AppKit/AppKit.h>
 
+
 @class EJActionButton;
 @class EJEjectableVolumesWatcher;
 
 
+// The main Ejectulate window.
 @interface EJWindowController : NSWindowController <NSWindowDelegate>
 {
   NSTreeController *tree;
@@ -21,16 +23,28 @@
   NSMenu *windowTitleAccessoryMenu;
 }
 
-@property (assign) IBOutlet NSTreeController *tree;
-@property (assign) IBOutlet NSOutlineView *outline;
-@property (assign) IBOutlet EJEjectableVolumesWatcher *volumesWatcher;
-@property (assign) IBOutlet NSButton *windowTitleAccessoryView;
-@property (assign) IBOutlet NSMenu *windowTitleAccessoryMenu;
-@property (readonly) NSInteger tabViewIndex;
+// A tree-driven outline view whose content is the volumes watcher's volumes.
+@property (assign, nonatomic) IBOutlet NSTreeController *tree;
+@property (assign, nonatomic) IBOutlet NSOutlineView *outline;
+@property (assign, nonatomic) IBOutlet EJEjectableVolumesWatcher*
+                                                                 volumesWatcher;
 
+// The action menu that sits on the window frame.
+@property (assign, nonatomic) IBOutlet NSButton *windowTitleAccessoryView;
+@property (assign, nonatomic) IBOutlet NSMenu *windowTitleAccessoryMenu;
+
+// Whether there are any ejectable volumes.
+@property (readonly, nonatomic) NSInteger tabViewIndex;
+
+// Load and show the main window, ignoring other apps (since we run as an 
+// agent).
 - (void)showWindow;
+
+// Close the window and hide the app so that whatever app previously had focus 
+// once again has focus.
 - (void)closeWindow;
 
+// Action for the action menu button.
 - (IBAction)showActionMenu:(id)sender;
 
 @end
