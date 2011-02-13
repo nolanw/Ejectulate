@@ -96,7 +96,7 @@
     {
       DADiskRef wholeDisk = DADiskCopyWholeDisk(disk);
       wholeDiskBSDName = [[NSString alloc] initWithUTF8String:
-                                                  DADiskGetBSDName(wholeDisk)];
+                                                   DADiskGetBSDName(wholeDisk)];
       CFRelease(wholeDisk);
     }
     BSDName = [[NSString alloc] initWithUTF8String:DADiskGetBSDName(disk)];
