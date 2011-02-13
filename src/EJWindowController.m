@@ -9,7 +9,6 @@
 #import "EJWindowController.h"
 #import "EJEjectableVolumesWatcher.h"
 #import "EJOutlineView.h"
-#import "CollectionUtils.h"
 #import "ImageAndTextCell.h"
 
 
@@ -54,7 +53,7 @@
 
 + (NSSet *)keyPathsForValuesAffectingTabViewIndex
 {
-  return $set(@"volumesWatcher.volumes.@count");
+  return nw_set(@"volumesWatcher.volumes.@count");
 }
 
 #if 0
@@ -111,7 +110,7 @@
 
 - (void)setUpWindow
 {
-  NSArray *buttons = $array(
+  NSArray *buttons = nw_array(
     [self.window standardWindowButton:NSWindowMiniaturizeButton],
     [self.window standardWindowButton:NSWindowZoomButton]);
   NSView *titleBar = [[buttons lastObject] superview];
@@ -161,9 +160,9 @@
 
 - (void)windowDidLoad
 {
-  [self.tree addObserverForKeyPath:@"arrangedObjects"
-                           options:NSKeyValueObservingOptionInitial
-                              task:^(id obj, NSDictionary *change)
+  [self.tree nw_addObserverForKeyPath:@"arrangedObjects"
+                              options:NSKeyValueObservingOptionInitial
+                                 task:^(id obj, NSDictionary *change)
     {
       [self.outline expandItem:nil expandChildren:YES];
       [self.window center];

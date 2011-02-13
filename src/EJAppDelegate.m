@@ -31,7 +31,7 @@
 
 + (void)initialize
 {
-  [[NSUserDefaults standardUserDefaults] registerDefaults:$dict(
+  [[NSUserDefaults standardUserDefaults] registerDefaults:nw_dict(
     @"StartOnLogin", @"NO")];
 }
 
@@ -48,9 +48,9 @@
   // Handle the user toggling option to start Ejectulate on login.
   NSUserDefaultsController *defaults;
   defaults = [NSUserDefaultsController sharedUserDefaultsController];
-  [defaults addObserverForKeyPath:@"values.StartsOnLogin"
-                          options:0
-                             task:^(id obj, NSDictionary *change)
+  [defaults nw_addObserverForKeyPath:@"values.StartsOnLogin"
+                             options:0
+                                task:^(id obj, NSDictionary *change)
     {
       // For some reason the change dictionary refuses to set a useful value 
       // for new, so here we just get it ourselves.

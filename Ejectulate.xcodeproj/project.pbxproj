@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1CB4C6C512A8642B0074349E /* DiskArbitration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1CB4C6C412A8642B0074349E /* DiskArbitration.framework */; };
-		1CDA338D12A9C54F00412DB4 /* CollectionUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA337612A9C54F00412DB4 /* CollectionUtils.m */; };
 		1CDA338E12A9C54F00412DB4 /* ImageAndTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA337812A9C54F00412DB4 /* ImageAndTextCell.m */; };
-		1CDA338F12A9C54F00412DB4 /* NSObject+BlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA337A12A9C54F00412DB4 /* NSObject+BlockObservation.m */; };
 		1CDA339112A9C54F00412DB4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1CDA337D12A9C54F00412DB4 /* InfoPlist.strings */; };
 		1CDA339212A9C54F00412DB4 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1CDA337F12A9C54F00412DB4 /* MainWindow.xib */; };
 		1CDA339312A9C54F00412DB4 /* EJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CDA338312A9C54F00412DB4 /* EJAppDelegate.m */; };
@@ -22,6 +20,11 @@
 		1CE00D3512A9E6F10086846F /* NWLoginItems.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE00D3412A9E6F10086846F /* NWLoginItems.m */; };
 		1CE00E0412AA19350086846F /* Ejectulate.icns in Resources */ = {isa = PBXBuildFile; fileRef = 1CE00E0312AA19350086846F /* Ejectulate.icns */; };
 		1CE00F6212AB027D0086846F /* EJEjectKeyWatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE00F6112AB027D0086846F /* EJEjectKeyWatcher.m */; };
+		1CE45898130754580033D779 /* NSArray+NWHandy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE45889130754580033D779 /* NSArray+NWHandy.m */; };
+		1CE45899130754580033D779 /* NSDictionary+NWHandy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4588B130754580033D779 /* NSDictionary+NWHandy.m */; };
+		1CE4589A130754580033D779 /* NSIndexPath+NWHandy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4588D130754580033D779 /* NSIndexPath+NWHandy.m */; };
+		1CE4589B130754580033D779 /* NSObject+NWBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4588F130754580033D779 /* NSObject+NWBlockObservation.m */; };
+		1CE4589C130754580033D779 /* NWBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE45893130754580033D779 /* NWBox.m */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,12 +32,8 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		1CB4C6C412A8642B0074349E /* DiskArbitration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DiskArbitration.framework; path = System/Library/Frameworks/DiskArbitration.framework; sourceTree = SDKROOT; };
-		1CDA337512A9C54F00412DB4 /* CollectionUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionUtils.h; sourceTree = "<group>"; };
-		1CDA337612A9C54F00412DB4 /* CollectionUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionUtils.m; sourceTree = "<group>"; };
 		1CDA337712A9C54F00412DB4 /* ImageAndTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAndTextCell.h; sourceTree = "<group>"; };
 		1CDA337812A9C54F00412DB4 /* ImageAndTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAndTextCell.m; sourceTree = "<group>"; };
-		1CDA337912A9C54F00412DB4 /* NSObject+BlockObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+BlockObservation.h"; sourceTree = "<group>"; };
-		1CDA337A12A9C54F00412DB4 /* NSObject+BlockObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+BlockObservation.m"; sourceTree = "<group>"; };
 		1CDA337C12A9C54F00412DB4 /* Ejectulate-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Ejectulate-Info.plist"; sourceTree = "<group>"; };
 		1CDA337E12A9C54F00412DB4 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1CDA337F12A9C54F00412DB4 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
@@ -55,6 +54,22 @@
 		1CE00E0312AA19350086846F /* Ejectulate.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Ejectulate.icns; sourceTree = "<group>"; };
 		1CE00F6012AB027D0086846F /* EJEjectKeyWatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EJEjectKeyWatcher.h; sourceTree = "<group>"; };
 		1CE00F6112AB027D0086846F /* EJEjectKeyWatcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EJEjectKeyWatcher.m; sourceTree = "<group>"; };
+		1CE45888130754580033D779 /* NSArray+NWHandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+NWHandy.h"; sourceTree = "<group>"; };
+		1CE45889130754580033D779 /* NSArray+NWHandy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+NWHandy.m"; sourceTree = "<group>"; };
+		1CE4588A130754580033D779 /* NSDictionary+NWHandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+NWHandy.h"; sourceTree = "<group>"; };
+		1CE4588B130754580033D779 /* NSDictionary+NWHandy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+NWHandy.m"; sourceTree = "<group>"; };
+		1CE4588C130754580033D779 /* NSIndexPath+NWHandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexPath+NWHandy.h"; sourceTree = "<group>"; };
+		1CE4588D130754580033D779 /* NSIndexPath+NWHandy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexPath+NWHandy.m"; sourceTree = "<group>"; };
+		1CE4588E130754580033D779 /* NSObject+NWBlockObservation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+NWBlockObservation.h"; sourceTree = "<group>"; };
+		1CE4588F130754580033D779 /* NSObject+NWBlockObservation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+NWBlockObservation.m"; sourceTree = "<group>"; };
+		1CE45890130754580033D779 /* NSSet+NWHandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSet+NWHandy.h"; sourceTree = "<group>"; };
+		1CE45891130754580033D779 /* NSSortDescriptor+NWHandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSSortDescriptor+NWHandy.h"; sourceTree = "<group>"; };
+		1CE45892130754580033D779 /* NWBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWBox.h; sourceTree = "<group>"; };
+		1CE45893130754580033D779 /* NWBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWBox.m; sourceTree = "<group>"; };
+		1CE45894130754580033D779 /* NWCollections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWCollections.h; sourceTree = "<group>"; };
+		1CE45895130754580033D779 /* NWHandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWHandy.h; sourceTree = "<group>"; };
+		1CE45896130754580033D779 /* NWLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLog.h; sourceTree = "<group>"; };
+		1CE45897130754580033D779 /* NWPrinting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWPrinting.h; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107320486CEB800E47090 /* Ejectulate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ejectulate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -103,12 +118,9 @@
 		1CDA337412A9C54F00412DB4 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				1CDA337512A9C54F00412DB4 /* CollectionUtils.h */,
-				1CDA337612A9C54F00412DB4 /* CollectionUtils.m */,
 				1CDA337712A9C54F00412DB4 /* ImageAndTextCell.h */,
 				1CDA337812A9C54F00412DB4 /* ImageAndTextCell.m */,
-				1CDA337912A9C54F00412DB4 /* NSObject+BlockObservation.h */,
-				1CDA337A12A9C54F00412DB4 /* NSObject+BlockObservation.m */,
+				1CE45887130754580033D779 /* NWHandy */,
 				1CE00D3312A9E6F10086846F /* NWLoginItems.h */,
 				1CE00D3412A9E6F10086846F /* NWLoginItems.m */,
 			);
@@ -145,6 +157,29 @@
 				1CDA338C12A9C54F00412DB4 /* main.m */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		1CE45887130754580033D779 /* NWHandy */ = {
+			isa = PBXGroup;
+			children = (
+				1CE45888130754580033D779 /* NSArray+NWHandy.h */,
+				1CE45889130754580033D779 /* NSArray+NWHandy.m */,
+				1CE4588A130754580033D779 /* NSDictionary+NWHandy.h */,
+				1CE4588B130754580033D779 /* NSDictionary+NWHandy.m */,
+				1CE4588C130754580033D779 /* NSIndexPath+NWHandy.h */,
+				1CE4588D130754580033D779 /* NSIndexPath+NWHandy.m */,
+				1CE4588E130754580033D779 /* NSObject+NWBlockObservation.h */,
+				1CE4588F130754580033D779 /* NSObject+NWBlockObservation.m */,
+				1CE45890130754580033D779 /* NSSet+NWHandy.h */,
+				1CE45891130754580033D779 /* NSSortDescriptor+NWHandy.h */,
+				1CE45892130754580033D779 /* NWBox.h */,
+				1CE45893130754580033D779 /* NWBox.m */,
+				1CE45894130754580033D779 /* NWCollections.h */,
+				1CE45895130754580033D779 /* NWHandy.h */,
+				1CE45896130754580033D779 /* NWLog.h */,
+				1CE45897130754580033D779 /* NWPrinting.h */,
+			);
+			path = NWHandy;
 			sourceTree = "<group>";
 		};
 		29B97314FDCFA39411CA2CEA /* Ejectulate */ = {
@@ -231,9 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1CDA338D12A9C54F00412DB4 /* CollectionUtils.m in Sources */,
 				1CDA338E12A9C54F00412DB4 /* ImageAndTextCell.m in Sources */,
-				1CDA338F12A9C54F00412DB4 /* NSObject+BlockObservation.m in Sources */,
 				1CDA339312A9C54F00412DB4 /* EJAppDelegate.m in Sources */,
 				1CDA339412A9C54F00412DB4 /* EJWindowController.m in Sources */,
 				1CDA339512A9C54F00412DB4 /* EJEjectableVolumesWatcher.m in Sources */,
@@ -242,6 +275,11 @@
 				1CDA339812A9C54F00412DB4 /* main.m in Sources */,
 				1CE00D3512A9E6F10086846F /* NWLoginItems.m in Sources */,
 				1CE00F6212AB027D0086846F /* EJEjectKeyWatcher.m in Sources */,
+				1CE45898130754580033D779 /* NSArray+NWHandy.m in Sources */,
+				1CE45899130754580033D779 /* NSDictionary+NWHandy.m in Sources */,
+				1CE4589A130754580033D779 /* NSIndexPath+NWHandy.m in Sources */,
+				1CE4589B130754580033D779 /* NSObject+NWBlockObservation.m in Sources */,
+				1CE4589C130754580033D779 /* NWBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
