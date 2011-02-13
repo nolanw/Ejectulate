@@ -164,9 +164,16 @@
                               options:NSKeyValueObservingOptionInitial
                                  task:^(id obj, NSDictionary *change)
     {
-      [self.outline expandItem:nil expandChildren:YES];
-      [self.window center];
-      [self sizeWindowToFit];
+      if ([[self.tree arrangedObjects] count] == 0)
+      {
+        [self closeWindow];
+      }
+      else
+      {
+        [self.outline expandItem:nil expandChildren:YES];
+        [self sizeWindowToFit];
+        [self.window center];
+      }
     }];
   [self setUpWindow];
 }
