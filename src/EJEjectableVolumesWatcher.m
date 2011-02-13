@@ -100,8 +100,7 @@
     EJVolume *wholeDisk = [EJVolume wholeDiskVolumeWithBSDName:BSDName];
     if (!wholeDisk)
     {
-      NSLog(@"%@ failed creating whole disk for BSDName %@", 
-            NSStringFromSelector(_cmd), BSDName);
+      NWLog(@"failed creating whole disk for BSDName %@", BSDName);
       continue;
     }
     NSMutableArray *children = [NSMutableArray array];
@@ -137,7 +136,7 @@
   {
     NSString *BSDName = sharesWholeDisk.wholeDiskBSDName;
     EJVolume *newWhole = [EJVolume wholeDiskVolumeWithBSDName:BSDName];
-    newWhole.children = $marray(sharesWholeDisk, newVolume);
+    newWhole.children = nw_marray(sharesWholeDisk, newVolume);
     NSUInteger index = [kvoVolumes indexOfObject:sharesWholeDisk];
     [kvoVolumes replaceObjectAtIndex:index withObject:newWhole];
   }

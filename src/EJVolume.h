@@ -73,8 +73,8 @@
 // Remove first child whose path is childPath, sending KVO notifications.
 - (void)removeChildVolumeWithPath:(NSString *)childPath;
 
-// Attempt to eject this volume and all child volumes. Listen to NSWorkspace 
-// notifications to learn of your success.
+// Attempt to eject this volume and all child volumes with a few different 
+// methods. Listen for NSWorkspace notifications to learn of your success.
 - (void)eject:(id)sender;
 
 @end

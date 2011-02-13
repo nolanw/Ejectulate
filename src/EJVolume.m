@@ -96,7 +96,7 @@
     {
       DADiskRef wholeDisk = DADiskCopyWholeDisk(disk);
       wholeDiskBSDName = [[NSString alloc] initWithUTF8String:
-                                                  DADiskGetBSDName(wholeDisk)];
+                                                   DADiskGetBSDName(wholeDisk)];
       CFRelease(wholeDisk);
     }
     BSDName = [[NSString alloc] initWithUTF8String:DADiskGetBSDName(disk)];
@@ -215,7 +215,7 @@ static void EjectImmediatelyOnUnmountCallback(DADiskRef disk,
                                               void *context)
 {
   if (!dissenter)
-    DADiskEject(disk, kDADiskUnmountOptionDefault, NULL, NULL);
+    DADiskEject(disk, kDADiskEjectOptionDefault, NULL, NULL);
 }
 
 - (void)eject:(id)sender
@@ -224,9 +224,18 @@ static void EjectImmediatelyOnUnmountCallback(DADiskRef disk,
   {
     [self.children makeObjectsPerformSelector:@selector(eject:)
                                    withObject:self];
+    return;
   }
-  else
-    self.local ? [self ejectLocal] : [self ejectNetwork];
+  if ([[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath:self.path])
+    return;
+  NSAppleScript *eject = [[[NSAppleScript alloc] initWithSource:nw_nsprintf(
+    @"tell application \"Finder\" to eject disk \"%@\"", 
+    self.name)] autorelease];
+  NSDictionary *error = nil;
+  [eject executeAndReturnError:&error];
+  if (error == nil)
+    return;
+  self.local ? [self ejectLocal] : [self ejectNetwork];
 }
 
 - (void)ejectLocal
@@ -239,7 +248,7 @@ static void EjectImmediatelyOnUnmountCallback(DADiskRef disk,
   if (disk)
   {
     DADiskUnmount(disk, kDADiskUnmountOptionDefault, 
-                                       EjectImmediatelyOnUnmountCallback, NULL);
+                                       EjectImmediatelyOnUnmountCallback, self);
     CFRelease(disk);
   }
   CFRelease(session);
