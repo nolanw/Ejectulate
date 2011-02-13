@@ -224,9 +224,18 @@ static void EjectImmediatelyOnUnmountCallback(DADiskRef disk,
   {
     [self.children makeObjectsPerformSelector:@selector(eject:)
                                    withObject:self];
+    return;
   }
-  else
-    self.local ? [self ejectLocal] : [self ejectNetwork];
+  if ([[NSWorkspace sharedWorkspace] unmountAndEjectDeviceAtPath:self.path])
+    return;
+  NSAppleScript *eject = [[[NSAppleScript alloc] initWithSource:nw_nsprintf(
+    @"tell application \"Finder\" to eject disk \"%@\"", 
+    self.name)] autorelease];
+  NSDictionary *error = nil;
+  [eject executeAndReturnError:&error];
+  if (error == nil)
+    return;
+  self.local ? [self ejectLocal] : [self ejectNetwork];
 }
 
 - (void)ejectLocal
