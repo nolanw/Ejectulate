@@ -215,7 +215,7 @@ static void EjectImmediatelyOnUnmountCallback(DADiskRef disk,
                                               void *context)
 {
   if (!dissenter)
-    DADiskEject(disk, kDADiskUnmountOptionDefault, NULL, NULL);
+    DADiskEject(disk, kDADiskEjectOptionDefault, NULL, NULL);
 }
 
 - (void)eject:(id)sender
