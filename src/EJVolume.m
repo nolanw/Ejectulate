@@ -239,7 +239,7 @@ static void EjectImmediatelyOnUnmountCallback(DADiskRef disk,
   if (disk)
   {
     DADiskUnmount(disk, kDADiskUnmountOptionDefault, 
-                                       EjectImmediatelyOnUnmountCallback, NULL);
+                                       EjectImmediatelyOnUnmountCallback, self);
     CFRelease(disk);
   }
   CFRelease(session);
