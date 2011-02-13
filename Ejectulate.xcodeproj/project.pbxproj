@@ -25,6 +25,7 @@
 		1CE4589A130754580033D779 /* NSIndexPath+NWHandy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4588D130754580033D779 /* NSIndexPath+NWHandy.m */; };
 		1CE4589B130754580033D779 /* NSObject+NWBlockObservation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE4588F130754580033D779 /* NSObject+NWBlockObservation.m */; };
 		1CE4589C130754580033D779 /* NWBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE45893130754580033D779 /* NWBox.m */; };
+		1CFF0D481307AA560066D865 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1CFF0D471307AA560066D865 /* Credits.rtf */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		1CE45895130754580033D779 /* NWHandy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWHandy.h; sourceTree = "<group>"; };
 		1CE45896130754580033D779 /* NWLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWLog.h; sourceTree = "<group>"; };
 		1CE45897130754580033D779 /* NWPrinting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWPrinting.h; sourceTree = "<group>"; };
+		1CFF0D471307AA560066D865 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		8D1107320486CEB800E47090 /* Ejectulate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ejectulate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,7 @@
 				1CDA337D12A9C54F00412DB4 /* InfoPlist.strings */,
 				1CDA337F12A9C54F00412DB4 /* MainWindow.xib */,
 				1CE00E0312AA19350086846F /* Ejectulate.icns */,
+				1CFF0D471307AA560066D865 /* Credits.rtf */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				1CDA339112A9C54F00412DB4 /* InfoPlist.strings in Resources */,
 				1CDA339212A9C54F00412DB4 /* MainWindow.xib in Resources */,
 				1CE00E0412AA19350086846F /* Ejectulate.icns in Resources */,
+				1CFF0D481307AA560066D865 /* Credits.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

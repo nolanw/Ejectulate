@@ -28,5 +28,7 @@
 	<string>NSApplication</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2011 Nolan Waite</string>
 </dict>
 </plist>

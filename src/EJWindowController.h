@@ -47,4 +47,7 @@
 // Action for the action menu button.
 - (IBAction)showActionMenu:(id)sender;
 
+// Hide Ejectulate window and show About window.
+- (IBAction)showAboutPanel:(id)sender;
+
 @end
