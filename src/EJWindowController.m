@@ -101,6 +101,12 @@
                    forView:button];
 }
 
+- (IBAction)showAboutPanel:(id)sender
+{
+  [self.window performClose:self];
+  [[NSApplication sharedApplication] orderFrontStandardAboutPanel:self];
+}
+
 - (CGFloat)titleBarHeight
 {
   NSRect frame = [self.window frame];

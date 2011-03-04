@@ -2,16 +2,17 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10H574</string>
+		<string key="IBDocument.SystemVersion">10J567</string>
 		<string key="IBDocument.InterfaceBuilderVersion">823</string>
 		<string key="IBDocument.AppKitVersion">1038.35</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<string key="IBDocument.HIToolboxVersion">462.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			<string key="NS.object.0">823</string>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="75"/>
 			<integer value="8"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -282,7 +283,6 @@
 														<int key="NSvFlags">-2147483392</int>
 														<string key="NSFrame">{{0, 99}, {255, 15}}</string>
 														<reference key="NSSuperview" ref="758461824"/>
-														<bool key="NSEnabled">YES</bool>
 														<int key="NSsFlags">1</int>
 														<reference key="NSTarget" ref="758461824"/>
 														<string key="NSAction">_doScroller:</string>
@@ -292,7 +292,7 @@
 												<string key="NSFrameSize">{270, 114}</string>
 												<reference key="NSSuperview" ref="167612369"/>
 												<reference key="NSNextKeyView" ref="219977438"/>
-												<int key="NSsFlags">688</int>
+												<int key="NSsFlags">560</int>
 												<reference key="NSVScroller" ref="281915980"/>
 												<reference key="NSHScroller" ref="145624256"/>
 												<reference key="NSContentView" ref="219977438"/>
@@ -377,36 +377,39 @@
 				<string key="NSTitle"/>
 				<object class="NSMutableArray" key="NSMenuItems">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="NSMenuItem" id="850367096">
+						<reference key="NSMenu" ref="659075385"/>
+						<string key="NSTitle">About Ejectulate</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<object class="NSCustomResource" key="NSOnImage" id="668508208">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuCheckmark</string>
+						</object>
+						<object class="NSCustomResource" key="NSMixedImage" id="799162098">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">NSMenuMixedState</string>
+						</object>
+					</object>
 					<object class="NSMenuItem" id="711664816">
 						<reference key="NSMenu" ref="659075385"/>
 						<string key="NSTitle">Start on Login</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<object class="NSCustomResource" key="NSOnImage" id="898605511">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuCheckmark</string>
-						</object>
-						<object class="NSCustomResource" key="NSMixedImage" id="480059031">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">NSMenuMixedState</string>
-						</object>
+						<reference key="NSOnImage" ref="668508208"/>
+						<reference key="NSMixedImage" ref="799162098"/>
 					</object>
 					<object class="NSMenuItem" id="809565938">
 						<reference key="NSMenu" ref="659075385"/>
 						<string key="NSTitle">Quit Ejectulate</string>
 						<string key="NSKeyEquiv"/>
 						<int key="NSMnemonicLoc">2147483647</int>
-						<reference key="NSOnImage" ref="898605511"/>
-						<reference key="NSMixedImage" ref="480059031"/>
+						<reference key="NSOnImage" ref="668508208"/>
+						<reference key="NSMixedImage" ref="799162098"/>
 					</object>
 				</object>
 			</object>
 			<object class="NSUserDefaultsController" id="331053227">
-				<object class="NSMutableArray" key="NSDeclaredKeys">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>StartOnLogin</string>
-					<string>StartsOnLogin</string>
-				</object>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</object>
@@ -598,6 +601,14 @@
 					</object>
 					<int key="connectionID">91</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">showAboutPanel:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="850367096"/>
+					</object>
+					<int key="connectionID">97</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -766,6 +777,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="809565938"/>
 							<reference ref="711664816"/>
+							<reference ref="850367096"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -812,6 +824,11 @@
 						<reference key="object" ref="431108366"/>
 						<reference key="parent" ref="123965098"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">95</int>
+						<reference key="object" ref="850367096"/>
+						<reference key="parent" ref="659075385"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -846,6 +863,7 @@
 					<string>83.IBPluginDependency</string>
 					<string>87.IBPluginDependency</string>
 					<string>94.IBPluginDependency</string>
+					<string>95.IBPluginDependency</string>
 				</object>
 				<object class="NSMutableArray" key="dict.values">
 					<bool key="EncodedWithXMLCoder">YES</bool>
@@ -874,11 +892,12 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>EJOutlineView</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{333, 791}, {151, 43}}</string>
+					<string>{{333, 771}, {163, 63}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{{333, 782}, {20, 17}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -901,7 +920,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">94</int>
+			<int key="maxID">97</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -926,14 +945,35 @@
 					<string key="className">EJWindowController</string>
 					<string key="superclassName">NSWindowController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">showActionMenu:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>showAboutPanel:</string>
+							<string>showActionMenu:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">showActionMenu:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">showActionMenu:</string>
-							<string key="candidateClassName">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>showAboutPanel:</string>
+							<string>showActionMenu:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">showAboutPanel:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showActionMenu:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
@@ -1006,7 +1046,7 @@
 					<string key="className">NSObject</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">lib/NSObject+BlockObservation.h</string>
+						<string key="minorKey">lib/NWHandy/NSObject+NWBlockObservation.h</string>
 					</object>
 				</object>
 			</object>
